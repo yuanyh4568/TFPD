@@ -38,7 +38,7 @@ local table "`location'/STATA output/Tables"
 log using "`log'/2_ED5_summstats_`today'.txt", text replace
 
 **********************************************************
-*2) ED5 - NYC - 3 years post pod - 3 pods
+*2) ED5 - NYC - 3 years post pod - 3 pod
 **********************************************************
 use "`data'/ED5_cleaned_20170330.dta", clear
 
