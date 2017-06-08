@@ -168,13 +168,14 @@ qui forvalues i=1/`N' {
 			}
 		}
 	}
+}
+
+qui forvalues i=1/`N' {
 	*calculate 3-way cumulative count for the last 3 or 6 months
 	if !missing(att1[`i']) & !missing(res1[`i']) & !missing(nurse1[`i']) {
-		count if `prov1' == `prov1'[`i'] &  `prov2' == `prov2'[`i'] & `prov3' == `prov3'[`i'] ///
-			& inrange(arrivaltime[`i'] - arrivaltime, 0, `3mo')
+		count if att1 == att1[`i'] &  res1 == res1[`i'] & nurse1 == nurse1[`i'] & inrange(arrivaltime[`i'] - arrivaltime, 0, `3mo')
 		replace tf_att1res1nurse1_3mo = r(N)-1 in `i'
-		count if `prov1' == `prov1'[`i'] &  `prov2' == `prov2'[`i'] & `prov3' == `prov3'[`i'] ///
-			& inrange(arrivaltime[`i'] - arrivaltime, 0, `6mo')
+		count if att1 == att1[`i'] &  res1 == res1[`i'] & nurse1 == nurse1[`i'] & inrange(arrivaltime[`i'] - arrivaltime, 0, `6mo')
 		replace tf_att1res1nurse1_6mo = r(N)-1 in `i'
 	}
 }
